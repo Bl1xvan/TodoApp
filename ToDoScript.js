@@ -4,14 +4,31 @@ let contList = document.getElementById('contlist');
 
 addToDoButton.addEventListener('click', function(){
     var listItem = document.createElement('li');
-    listItem.classList.add('paragraph-styling');
+    var paragraph = document.createElement ('p');
+    var crossOut = document.createElement('button');
+    var takeOut = document.createElement ('button');
+
+    listItem.classList.add('list-styling');
+    paragraph.classList.add('list-item-styling');
+    crossOut.classList.add('list-item-styling');
+    takeOut.classList.add('list-item-styling');
+
     contList.appendChild(listItem);
-    listItem.innerText = inputField.value;
+    listItem.appendChild(paragraph);
+    listItem.appendChild(crossOut);
+    listItem.appendChild(takeOut);
+
+    paragraph.innerText = inputField.value;
+    crossOut.innerText = "check";
+    takeOut.innerText = "delete";
+
     inputField.value = "";
-    listItem.addEventListener('click', function(){
-        listItem.style.textDecoration = "line-through";
+
+    crossOut.addEventListener('click', function(){
+        paragraph.style.textDecoration = "line-through";
     })
-    listItem.addEventListener('dblclick', function(){
+    takeOut.addEventListener('click', function(){
         contList.removeChild(listItem);
+ 
     })
 });
